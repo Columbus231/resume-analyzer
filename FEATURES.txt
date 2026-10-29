@@ -1,0 +1,97 @@
+CAREERLENS AI - APP FEATURE LIST
+================================
+
+CareerLens AI is a student-focused resume analysis and career-planning web app.
+It has a responsive React/Vite frontend and a Python/FastAPI backend. Demo mode
+is enabled by default and works without an AI API key.
+
+RESUME INPUT AND FILE HANDLING
+------------------------------
+- Upload a PDF or DOCX resume for text extraction.
+- Paste resume text directly into an editor.
+- Review and edit extracted text before analysis.
+- Validate file extension, file size, readability, and extracted-text length.
+- Supports files up to 5 MB and extracted resume text up to 30,000 characters.
+- PDF and DOCX uploads are processed in memory; files are not saved by the API.
+
+RESUME ANALYSIS
+---------------
+- Generate a resume summary.
+- Identify skills and group them by category.
+- Distinguish skills explicitly mentioned from skills inferred by AI.
+- Show evidence excerpts and confidence values for identified skills.
+- Validate AI structured output and discard claimed "mentioned" skills whose
+  evidence excerpt is not present in the submitted resume.
+- Run deterministic keyword-based analysis locally in demo mode.
+- Optionally use an OpenAI-compatible AI provider when configured on the backend.
+
+SKILLS AND CAREER EXPLORATION
+-----------------------------
+- View skill categories, counts, evidence labels, and charts.
+- See up to six recommended entry-level role directions.
+- Current role catalog includes Frontend Developer, Backend Developer,
+  Full-Stack Developer, Python Developer, Java Developer, Data Analyst,
+  Data Scientist, Machine Learning Engineer, Cloud Engineer,
+  Software Testing Engineer, Cybersecurity Analyst, and UI/UX Designer.
+- Each role recommendation includes an estimated match, explanation,
+  explicitly matched skills, skills not found in the resume, and next steps.
+- Choose a target role and recalculate role-specific skill gaps and learning ideas.
+- Matching estimates use mapped skill overlap (70%), project evidence (15%),
+  education evidence (10%), and experience evidence (5%).
+- Role matches are estimates, not live job listings or employability guarantees.
+
+SKILL GAPS AND LEARNING ROADMAP
+-------------------------------
+- List missing or unmentioned skills with High, Medium, or Low priority.
+- Explain why a skill matters for the selected role.
+- Clarify that an unmentioned skill may still be known by the student.
+- Show beginner learning steps, practice-project ideas, and rough durations.
+- Link to selected trusted learning resources and provider pages.
+- Organize suggestions into a flexible four-week / 30-day roadmap.
+- Mark roadmap items complete for the current page session.
+- Download the roadmap as a text file.
+
+RESUME IMPROVEMENT AND EXPORT
+----------------------------
+- Suggest improvements for resume sections, with issue, reason, revision idea,
+  and priority.
+- Let the student provide section text for an AI or demo rewrite preview.
+- Show the original text beside the suggested revision before export.
+- Export an analysis summary as PDF.
+- Export an improved resume draft as DOCX, replacing the first matching
+  occurrence of the supplied original section text.
+- Rewrites are suggestions; the student should verify them and preserve facts.
+
+DASHBOARD AND USER EXPERIENCE
+-----------------------------
+- Dashboard with guidance score, skill count, role directions, and roadmap count.
+- Resume summary, score dimensions, top role recommendations, skill gaps,
+  and recent analyses.
+- Navigation for Dashboard, Analyze Resume, Skills Analysis,
+  Job Recommendations, Learning Roadmap, and Profile.
+- Responsive layouts, mobile navigation, loading indicators, notifications,
+  validation messages, empty states, charts, and accessible focus styles.
+- Profile page to clear the current session's resume and analysis state.
+- Recent analysis history is kept in browser memory only for the current session.
+
+PRIVACY, CONFIGURATION, AND API
+-------------------------------  
+- AI API credentials are configured only in the backend environment.
+- AI processing is disabled unless explicitly enabled.
+- Resume text is sent to the configured AI provider only when AI mode is enabled.
+- Resume content is treated as untrusted input in AI prompts.
+- Rate limits are applied to upload, analysis, recommendations, gaps, roadmap,
+  and improvement endpoints.
+- API endpoints include health, upload, analyze, improve, export,
+  job recommendations, skill gaps, and learning roadmap.
+- Request and response data use Pydantic validation.
+
+CURRENT SCOPE LIMITATIONS
+-------------------------
+- No student accounts, authentication, or multi-student record isolation.
+- No database or persistent resume / analysis history.
+- Analysis history and roadmap checkmarks are session-only.
+- Demo mode uses keyword matching; it is not a full AI resume interpretation.
+- No live job vacancy search or placement prediction.
+- No actual ATS scoring.
+- Role matching and the resume guidance score are heuristic estimates.
